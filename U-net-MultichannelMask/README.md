@@ -11,9 +11,12 @@ It can be easily used for multiclass segmentation, portrait segmentation, medica
 ### Training
 
 ```console
-> python train.py -h
+> python3 train.py -h
+
 usage: train.py [-h] [--epochs E] [--batch-size B] [--learning-rate LR]
-                [--load LOAD] [--scale SCALE] [--validation VAL] [--amp]
+                [--load LOAD] [--load_data LOAD_DATA] [--save_data SAVE_DATA]
+                [--validation VAL] [--amp] [--bilinear] [--classes CLASSES]
+                [--channels CHANNELS]
 
 Train the UNet on images and target masks
 
@@ -24,11 +27,17 @@ optional arguments:
   --learning-rate LR, -l LR
                         Learning rate
   --load LOAD, -f LOAD  Load model from a .pth file
-  --scale SCALE, -s SCALE
-                        Downscaling factor of the images
+  --load_data LOAD_DATA
+                        Load dataloaders from a .pth file
+  --save_data SAVE_DATA
+                        Save dataloaders into a .pth file
   --validation VAL, -v VAL
                         Percent of the data that is used as validation (0-100)
+  --amp                 Use mixed precision
+  --bilinear            Use bilinear upsampling
+  --classes CLASSES, -c CLASSES
+                        Number of classes
+  --channels CHANNELS, -n CHANNELS
+                        Number of input img channels
+
 ```
-
-By default, the `scale` is 0.5, so if you wish to obtain better results (but use more memory), set it to 1.
-
